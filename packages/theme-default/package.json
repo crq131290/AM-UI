@@ -20,6 +20,7 @@
   "author": "crq131290",
   "license": "MIT",
   "dependencies": {
+    "gulp": "^3.9.1",
     "gulp-less": "^4.0.1"
   }
 }
