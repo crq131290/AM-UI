@@ -1,0 +1,25 @@
+{
+  "name": "am-ui-theme-default",
+  "version": "1.0.0",
+  "description": "am-ui-component-theme-default",
+  "main": "lib/index.css",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-postcss": "^6.1.1",
+    "postcss-salad": "^1.0.5"
+  },
+  "scripts": {
+    "dev": "gulp build && gulp watch",
+    "build": "gulp build"
+  },
+  "keywords": [
+    "am-ui",
+    "theme"
+  ],
+  "author": "crq131290",
+  "license": "MIT",
+  "dependencies": {
+    "gulp-less": "^4.0.1"
+  }
+}
