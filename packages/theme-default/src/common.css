@@ -4,6 +4,11 @@ html{
 body{
   font-size: 12px;
 }
+.clear::after{
+  content:"";
+  display:table;
+  clear: both;
+}
 .f-left {
   float: left;
 }
@@ -12,4 +17,7 @@ body{
 }
 .w-100{
   width: 100%;
+}
+li{
+  list-style: none;
 }

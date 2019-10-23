@@ -1,0 +1,24 @@
+@import "./common/var.css";
+.c-checkbox-group{
+  @b el-checkbox{
+    @e input{
+      @when checked+.el-checkbox__label{
+        color:var(--color-checkbox);
+      }
+      @when focus .el-checkbox__inner{
+        border-color:var(--color-checkbox);
+      }
+    }
+    @e input{
+      @when checked , is-indeterminate {
+        .el-checkbox__inner{
+          border-color:var(--color-checkbox);
+          background-color:var(--color-checkbox);
+        }
+      }
+    }
+    @e inner:hover{
+      border-color:var(--color-checkbox);
+    }
+  }
+}

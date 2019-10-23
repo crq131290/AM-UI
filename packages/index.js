@@ -8,10 +8,28 @@ import Xun from "./Xun";
 import Hou from "./Hou";
 import Season from "./Season";
 import TimePicker from "./TimePicker"
+import Dialog from "./Dialog"
+import CheckboxGroup from "./CheckboxGroup"
+import MapLegend from "./MapLegend"
+import LinerLegend from "./LinerLegend"
+import RectLegend from "./Legend"
+import TwoCol from "./TwoCol"
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 
-const components = [HelloWorld,Xun,Hou,Season,TimePicker];
+const components = [
+  HelloWorld,
+  CheckboxGroup,
+  Dialog,
+  Hou,
+  Season,
+  TimePicker,
+  TwoCol,
+  Xun,
+  MapLegend,
+  LinerLegend,
+  RectLegend,
+];
 
 const install = function(Vue) {
   Vue.use(Element)

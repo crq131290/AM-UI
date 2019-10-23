@@ -1,0 +1,10 @@
+:root{
+  /* Colors*/
+  --color-primary: #50bfff;
+  --color-success: #13ce66;
+  --color-warning: #f7ba2a;
+  --color-danger: #ff4949;
+  --color-info: #909399;
+
+  --color-checkbox: #13ce66;
+}

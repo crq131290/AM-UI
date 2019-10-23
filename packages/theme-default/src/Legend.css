@@ -1,0 +1,103 @@
+@b c-legend {
+  @m rect {
+    position: relative;
+    @e wrapper {
+      position: relative;
+      padding: 10px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      user-select: none;
+    }
+    @e wrapper {
+      inner {
+        position: relative;
+        margin-bottom: 5px;
+      }
+    }
+    @e inner {
+      @e rect {
+        display: inline-block;
+        width: 45px;
+        height: 20px;
+        border-radius: 3px;
+        background-color: #ccc;
+        vertical-align: middle;
+        margin-right: 15px;
+      }
+      @e label {}
+    }
+  }
+  @m map{
+    position: relative;
+    width:3.50rem;
+    @e wrapper{
+      padding: .10rem;
+      height:.50rem;
+      background-color: rgba(0,0,0,.6);
+      box-sizing: border-box;
+    }
+    @e body,.c-legend--map__label{
+      /* width:calc(100% - .50rem) */
+    }
+    @e body{
+      height:.15rem;
+      cursor: pointer;
+      border: 1px solid  rgba(0,0,0,.8);
+      &:hover{
+        border-color:#ccc;
+      }
+    }
+    @e label{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    @e label li{
+      flex:1;
+      color:#fff;
+      text-align: center;
+      font-size: .13rem;
+      text-align: left;
+    }
+    @e unit{
+      position: absolute;
+      width: 40px;
+      right: 0;
+      bottom:0;
+      text-align: center;
+      color:#fff;
+    }
+    @e colors{
+      position: absolute;
+      left:0;
+      padding: .15rem 0;
+      width: 100%;
+      background-color: rgba(0,0,0,.6);
+      @when top{
+        bottom:100%;
+      }
+      @when bottom {
+        top:100%;
+      }
+    }
+    @e colors li{
+      height: .15rem;
+      margin:.03rem .05rem;
+      transition: all .3s;
+      border: 1px solid  rgba(0,0,0,.7);
+      box-sizing: content-box;
+      cursor: pointer;
+      &:hover{
+        border-color:#fff;
+      }
+      @when actived{
+        border-color:#fff;
+      }
+    }
+  }
+
+  @m linner{}
+}
