@@ -4,16 +4,20 @@
  */
 
 import HelloWorld from "./HelloWorld";
-import Xun from "./Xun";
+import CheckboxGroup from "./CheckboxGroup"
+import Dialog from "./Dialog"
+import GradeLegend from './GradeLegend'
 import Hou from "./Hou";
+import LinerLegend from "./LinerLegend"
+import MapLegend from "./MapLegend"
+import PageSign from "./PageSign"
+import ProgressBar from "./ProgressBar"
+
+import RectLegend from "./Legend"
 import Season from "./Season";
 import TimePicker from "./TimePicker"
-import Dialog from "./Dialog"
-import CheckboxGroup from "./CheckboxGroup"
-import MapLegend from "./MapLegend"
-import LinerLegend from "./LinerLegend"
-import RectLegend from "./Legend"
 import TwoCol from "./TwoCol"
+import Xun from "./Xun";
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 
@@ -21,14 +25,17 @@ const components = [
   HelloWorld,
   CheckboxGroup,
   Dialog,
+  GradeLegend,
   Hou,
+  LinerLegend,
+  PageSign,
+  ProgressBar,
+  MapLegend,
+  RectLegend,
   Season,
   TimePicker,
   TwoCol,
   Xun,
-  MapLegend,
-  LinerLegend,
-  RectLegend,
 ];
 
 const install = function(Vue) {

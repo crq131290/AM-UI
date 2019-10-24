@@ -9,12 +9,12 @@
       user-select: none;
     }
     @e wrapper {
-      inner {
+      @e inner {
         position: relative;
-        margin-bottom: 5px;
       }
     }
     @e inner {
+      margin-bottom: 5px;
       @e rect {
         display: inline-block;
         width: 45px;
@@ -27,77 +27,208 @@
       @e label {}
     }
   }
-  @m map{
+  @m map {
     position: relative;
-    width:3.50rem;
-    @e wrapper{
+    width: 3.50rem;
+    @e wrapper {
       padding: .10rem;
+      height: .50rem;
+      background-color: rgba(0, 0, 0, .6);
+      box-sizing: border-box;
+    }
+    @e inner{
+      /* width:calc(100% - .50rem) */
+      height: .15rem;
+      cursor: pointer;
+      border: 1px solid rgba(0, 0, 0, .8);
+      &:hover {
+        border-color: #ccc;
+      }
+    }
+    @e body {
+      background-color: #fff;
+    }
+    @e label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      padding: 0;
+    }
+    @e label li {
+      flex: 1;
+      color: #fff;
+      text-align: center;
+      font-size: .13rem;
+      text-align: left;
+    }
+    @e unit {
+      position: absolute;
+      width: 40px;
+      right: 0;
+      bottom: 0;
+      text-align: center;
+      color: #fff;
+    }
+    @e colors {
+      position: absolute;
+      left: 0;
+      padding: .15rem 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, .6);
+      @when top {
+        bottom: 100%;
+      }
+      @when bottom {
+        top: 100%;
+      }
+    }
+    @e colors li {
+      height: .15rem;
+      margin: .03rem .05rem;
+      transition: all .3s;
+      border: 1px solid rgba(0, 0, 0, .7);
+      box-sizing: content-box;
+      cursor: pointer;
+      &:hover {
+        border-color: #fff;
+      }
+      @when actived {
+        border-color: #fff;
+      }
+    }
+  }
+  @m liner {
+    @m col {
+      @e wrapper {
+        position: relative;
+        display: inline-block;
+        /* padding: 10px; */
+        cursor: pointer;
+        border: 1px solid transparent;
+        user-select: none;
+      }
+      @e inner {
+        position: relative;
+      }
+      @e liner {
+        height: 100%;
+        border-radius: 30px;
+        margin-right: 10px;
+      }
+      @e label {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: space-between;
+        margin: 0;
+        padding: 0;
+        font-size: 10px;
+        text-align: left;
+      }
+    }
+    @m row {
+      @e wrapper {
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        border: 1px solid transparent;
+        user-select: none;
+        border-top-right-radius: 500px;
+        border-bottom-right-radius: 500px;
+        border-top-left-radius: 500px;
+        border-bottom-left-radius: 500px;
+      }
+      @e liner {
+        width: 100%;
+        height: 100%;
+        border-radius: 30px;
+      }
+      @e label {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
+        padding: 0;
+        font-size: 10px;
+        text-align: left;
+        & li {
+          flex: 1;
+        }
+      }
+      @e unit {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+    }
+  }
+  @m grade {
+    
+    position: relative;
+    width: 3.5rem;
+
+    @e wrapper{
+      position: relative;
+      padding: 10px;
+      width:3.50rem;
       height:.50rem;
       background-color: rgba(0,0,0,.6);
       box-sizing: border-box;
     }
-    @e body,.c-legend--map__label{
-      /* width:calc(100% - .50rem) */
+    @e inner{
+      height: 28px;
     }
     @e body{
-      height:.15rem;
+      display: flex;
+      margin: 0;
+      padding: 0;
+      height:16px;
+      background: #fff;
+      border: 1px solid  rgba(0,0,0,.6);
       cursor: pointer;
-      border: 1px solid  rgba(0,0,0,.8);
       &:hover{
         border-color:#ccc;
+      }
+      li{
+        flex:1;
+      }
+    }
+    @e colors{
+      padding: 15px 0;
+      cursor: pointer;
+      background-color: rgba(0,0,0,.6);
+      li{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 3px 5px;
+        height: 16px;
+        border: 1px solid  rgba(0,0,0,.6);
+        &.is-actived,&:hover{
+          border: 1px solid  #fff;
+        }
+        span{
+          flex: 1;
+        }
       }
     }
     @e label{
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      margin: 0;
-      padding: 0;
+      align-content: center;
+      margin-top: 8px;
     }
-
     @e label li{
       flex:1;
       color:#fff;
       text-align: center;
       font-size: .13rem;
-      text-align: left;
     }
     @e unit{
       position: absolute;
-      width: 40px;
-      right: 0;
+      width:.40rem;
+      right:0;
       bottom:0;
       text-align: center;
       color:#fff;
     }
-    @e colors{
-      position: absolute;
-      left:0;
-      padding: .15rem 0;
-      width: 100%;
-      background-color: rgba(0,0,0,.6);
-      @when top{
-        bottom:100%;
-      }
-      @when bottom {
-        top:100%;
-      }
-    }
-    @e colors li{
-      height: .15rem;
-      margin:.03rem .05rem;
-      transition: all .3s;
-      border: 1px solid  rgba(0,0,0,.7);
-      box-sizing: content-box;
-      cursor: pointer;
-      &:hover{
-        border-color:#fff;
-      }
-      @when actived{
-        border-color:#fff;
-      }
-    }
   }
-
-  @m linner{}
 }

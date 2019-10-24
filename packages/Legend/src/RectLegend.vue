@@ -4,7 +4,7 @@
       <ul class="c-legend--rect__wrapper">
         <li class="c-legend--rect__inner" v-for="(item,index) in data" :key="index">
           <a class="c-legend--rect__inner__rect" :style="{background:item[defProp.color]}"></a>
-          <span class="c-legend--rect__label">{{item[defProp.label]}}</span>
+          <span class="c-legend--rect__label">{{item[defProp.label]}} {{unit}}</span>
         </li>
       </ul>
     </div>
@@ -25,6 +25,10 @@ export default {
     options:{
       type:Object,
       default:()=>({})
+    },
+    unit:{
+      type:String,
+      default:"℃"
     }
   },
 }

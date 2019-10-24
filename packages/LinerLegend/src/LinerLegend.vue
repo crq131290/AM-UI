@@ -1,13 +1,24 @@
 <template>
-  <div class="c-liner-legend">
-    <div class="c-liner-legend__wrapper">
-      <div class="c-liner-legend__inner clear" :style="options">
-        <a class="c-liner-legend__liner f-left" :style="{background:getLinerBg}"></a>
-        <ul class="c-liner-legend__unit f-left">
-          <li class="c-liner-legend__label" v-for="(item,index) in data" :key="index">
-            {{item.label}}
+  <div class="c-legend--liner">
+    <div v-if="type=='col'" class="c-legend--liner--col__wrapper">
+      <div class="c-legend--liner--col__inner clear">
+        <a class="c-legend--liner--col__liner f-left" :style="{background:getLinerCol,width:col.width,height:col.height}"></a>
+        <ul class="c-legend--liner--col__label f-left" :style="{height:col.height||'350px'}">
+          <li v-for="(item,index) in data" :key="index">
+            {{item.label}} {{unit}}
           </li>
         </ul>
+      </div>
+    </div>
+    <div v-if="type=='row'" class="c-legend--liner--row__wrapper">
+      <div class="c-legend--liner--row__inner clear" >
+        <div class="c-legend--liner--row__liner" :style="{background:getLinerRow,width:row.width,height:row.height}"></div>
+        <ul class="c-legend--liner--row__label">
+          <li v-for="(item,index) in data" :key="index">{{item.label}}</li>
+        </ul>
+        <span class="c-legend--liner--row__unit">
+          {{unit}}
+        </span>
       </div>
     </div>
   </div>
@@ -20,49 +31,43 @@ export default {
       type:Array,
       default:()=>[]
     },
-    options:{
+    col:{
       type:Object,
-      default:()=>({height:'350px'})
+      default:()=>({height:'350px',width:'20px'})
+    },
+    row:{
+      type:Object,
+      default:()=>({height:'20px',width:'350px'})
+    },
+    unit:{
+      type:String,
+      default:()=>"℃"
+    },
+    type:{
+      type:String,
+      default:()=>"col"
+    },
+    notValue:{
+      type:Object,
+      default:()=>({
+        color:"#efefef",
+        isWhite:false
+      })
     }
   },
   computed:{
-    getLinerBg(){
+    getLinerCol(){
       let liner = this.data.map(item=>item.color)
+      if(this.notValue.isWhite) liner.unshift(this.notValue.color)
       return 'linear-gradient(to top,'+ liner.join(',')+')'
+    },
+    getLinerRow(){
+      let liner = this.data.map(item=>item.color)
+      liner.push(this.data[this.data.length-1].color)
+      if(this.notValue.isWhite) liner.unshift(this.notValue.color)
+      return 'linear-gradient(to right,'+ liner.join(',')+')'
     },
   },
 }
 </script>
-<style lang="less" scoped>
-  .c-liner-legend{
-    .c-liner-legend__wrapper{
-      position: absolute;
-      padding:10px;
-      cursor: pointer;
-      border: 1px solid transparent;
-      user-select: none;
-    }
-    .c-liner-legend__inner{
-      position: relative;
-      height:350px;
-    }
-    .c-liner-legend__inner .c-liner-legend__liner{
-      width: 20px;
-      height: 100%;
-      border-radius:30px; 
-      margin-right: 10px;
-    }
-    .c-liner-legend__inner .c-liner-legend__unit {
-      display: flex;
-      flex-direction: column-reverse;
-      justify-content: space-between;
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      font-size: 10px;
-      line-height:0;
-      text-align: left;
-    }
-  }
-</style>
 

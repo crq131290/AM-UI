@@ -21,3 +21,9 @@ body{
 li{
   list-style: none;
 }
+.ps-rel{
+  position: relative;
+} 
+.hover{
+  cursor: pointer;
+}
