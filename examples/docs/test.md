@@ -66,6 +66,7 @@ export default{
 ### map色斑图例
 <c-grade-legend :data="legend" :labelList="[1,2,3]"></c-grade-legend>
 ### progress精度条
+<c-progress-bar ></c-progress-bar>
 ### 页签按钮
 <c-page-sign ></c-page-sign>
 
