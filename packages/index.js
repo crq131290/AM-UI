@@ -3,7 +3,9 @@
  * Date: 2019/10/18
  */
 
-import HelloWorld from "./HelloWorld";
+import Element from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
+
 import CheckboxGroup from "./CheckboxGroup"
 import Dialog from "./Dialog"
 import GradeLegend from './GradeLegend'
@@ -11,28 +13,31 @@ import Hou from "./Hou";
 import LinerLegend from "./LinerLegend"
 import MapLegend from "./MapLegend"
 import PageSign from "./PageSign"
+import Panl from "./Panl"
+import PdfView from "./PdfView"
 import ProgressBar from "./ProgressBar"
 
-import RectLegend from "./Legend"
+import RectLegend from "./RectLegend"
 import Season from "./Season";
+import SelectTree from "./SelectTree";
 import TimePicker from "./TimePicker"
 import TwoCol from "./TwoCol"
 import Xun from "./Xun";
-import Element from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css';
 
 const components = [
-  HelloWorld,
   CheckboxGroup,
   Dialog,
   GradeLegend,
   Hou,
   LinerLegend,
   PageSign,
+  Panl,
+  PdfView,
   ProgressBar,
   MapLegend,
   RectLegend,
   Season,
+  SelectTree,
   TimePicker,
   TwoCol,
   Xun,
@@ -50,6 +55,5 @@ if (typeof window !== "undefined" && window.Vue) {
 }
 
 export default {
-  install,
-  HelloWorld
+  install
 };

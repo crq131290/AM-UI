@@ -1,0 +1,11 @@
+@b c-pdf-view{
+  @e tab{
+    top:-20px;
+  }
+  @e wrapper{
+    text-align: center;
+  }
+  @e footer{
+    z-index: 1000;
+  }
+}

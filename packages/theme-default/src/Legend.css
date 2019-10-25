@@ -29,16 +29,15 @@
   }
   @m map {
     position: relative;
-    width: 3.50rem;
+    width: 350px;
     @e wrapper {
-      padding: .10rem;
-      height: .50rem;
+      padding: 10px;
+      height: 50px;
       background-color: rgba(0, 0, 0, .6);
       box-sizing: border-box;
     }
     @e inner{
-      /* width:calc(100% - .50rem) */
-      height: .15rem;
+      height: 15px;
       cursor: pointer;
       border: 1px solid rgba(0, 0, 0, .8);
       &:hover {
@@ -52,14 +51,14 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-top: 8px;
+      margin-top: 10px;
       padding: 0;
     }
     @e label li {
       flex: 1;
       color: #fff;
       text-align: center;
-      font-size: .13rem;
+      font-size: 13px;
       text-align: left;
     }
     @e unit {
@@ -73,7 +72,7 @@
     @e colors {
       position: absolute;
       left: 0;
-      padding: .15rem 0;
+      padding: 15px 0;
       width: 100%;
       background-color: rgba(0, 0, 0, .6);
       @when top {
@@ -84,8 +83,8 @@
       }
     }
     @e colors li {
-      height: .15rem;
-      margin: .03rem .05rem;
+      height: 15px;
+      margin: 3px 5px;
       transition: all .3s;
       border: 1px solid rgba(0, 0, 0, .7);
       box-sizing: content-box;
@@ -164,13 +163,13 @@
   @m grade {
     
     position: relative;
-    width: 3.5rem;
+    width: 350px;
 
     @e wrapper{
       position: relative;
       padding: 10px;
-      width:3.50rem;
-      height:.50rem;
+      width:350px;
+      height:50px;
       background-color: rgba(0,0,0,.6);
       box-sizing: border-box;
     }
@@ -214,17 +213,17 @@
       display: flex;
       justify-content: space-between;
       align-content: center;
-      margin-top: 8px;
+      margin-top: 10px;
     }
     @e label li{
       flex:1;
       color:#fff;
       text-align: center;
-      font-size: .13rem;
+      font-size:  13px;
     }
     @e unit{
       position: absolute;
-      width:.40rem;
+      width: 40px;
       right:0;
       bottom:0;
       text-align: center;

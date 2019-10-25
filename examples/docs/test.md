@@ -11,7 +11,8 @@ export default{
       test:["2019-10-11", "2019-10-20"],
       dialogVisible:false,
       checkboxData:[{id:1,label:'1111'}],
-      legend:[{color:"red",label:111},{color:"green",label:211111111},{color:"blue",label:3333}]
+      legend:[{color:"red",label:111},{color:"green",label:211111111},{color:"blue",label:3333}],
+      tree:[{id:1,label:123},{id:2,label:123},{id:3,label:123}]
     }
   },
   watch:{
@@ -69,4 +70,13 @@ export default{
 <c-progress-bar ></c-progress-bar>
 ### 页签按钮
 <c-page-sign ></c-page-sign>
+<br>
 
+### panl
+<c-panl></c-panl>
+
+### pdfView
+<c-pdf-view class="w-50" pdf-url="/static/test .pdf"></c-pdf-view>
+
+### SelectTree
+<c-select-tree :data="tree" class="w-30"></c-select-tree>

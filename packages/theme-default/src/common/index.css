@@ -1,0 +1,88 @@
+@import "reset.css";
+@import "height.css";
+@import "width.css";
+@import "padding.css";
+@import "margin.css";
+
+html{
+  font-size: 100px;
+}
+body{
+  font-size: 12px;
+}
+/* float */
+.f-left {
+  float: left;
+}
+.f-right {
+  float: right;
+}
+.clear::after{
+  content:"";
+  display:table;
+  clear: both;
+}
+/* position */
+.ps-rel{
+  position: relative;
+} 
+.ps-abs{
+  position: absolute;
+} 
+.ps-fixed{
+  position: fixed;
+} 
+/* display */
+.in-block{
+  display: inline-block;
+}
+.block{
+  display: block;
+}
+.flex{
+  display: flex;
+}
+/* overflow */
+.over-hidden{
+  overflow: hidden;
+}
+.over-hidden-x{
+  overflow-x: hidden;
+}
+.over-hidden-y{
+  overflow-y: hidden;
+}
+.over-scroll{
+  overflow: scroll;
+}
+.over-scroll-x{
+  overflow-x: scroll;
+}
+.over-scroll-y{
+  overflow-y: scroll;
+}
+/* text-align */
+.text-center{
+  text-align: center;
+}
+.text-left{
+  text-align: left;
+}
+.text-right{
+  text-align: right;
+}
+/* 鼠标 */
+.hover{
+  cursor: pointer;
+}
+.not-allowed{
+  cursor: not-allowed;
+}
+
+.bg-fff{
+  background: #fff;
+}
+
+.rx-3{
+  border-radius: 3px
+}

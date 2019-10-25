@@ -1,0 +1,12 @@
+@b c-select-tree{
+  border:1px solid #efefef;
+  @e title{
+    line-height: 2.5;
+    @e wrapper{
+      background: #efefef;
+    }
+  }
+  @e wrapper{
+    overflow-y: auto;
+  }
+}
