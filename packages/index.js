@@ -10,6 +10,7 @@ import CheckboxGroup from "./CheckboxGroup"
 import Dialog from "./Dialog"
 import GradeLegend from './GradeLegend'
 import Hou from "./Hou";
+import GisPic from "./GisPic";
 import LinerLegend from "./LinerLegend"
 import MapLegend from "./MapLegend"
 import PageSign from "./PageSign"
@@ -29,6 +30,7 @@ const components = [
   Dialog,
   GradeLegend,
   Hou,
+  GisPic,
   LinerLegend,
   PageSign,
   Panl,

@@ -80,3 +80,5 @@ export default{
 
 ### SelectTree
 <c-select-tree :data="tree" class="w-30"></c-select-tree>
+### GIS
+<c-gis-pic ></c-gis-pic>

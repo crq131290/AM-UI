@@ -19,7 +19,7 @@
       >
         <img
           class="compass"
-          :src="compass"
+          :src="compass.url"
           alt=""
         >
       </vue-draggable-resizable>
@@ -62,7 +62,7 @@
             :src="unit.url"
             alt=""
           >
-          <span>{{unit}}</span>
+          <span>{{unit.label}}</span>
         </h1>
       </vue-draggable-resizable>
     </div>
@@ -77,11 +77,12 @@ import * as GeoTIFF from 'geotiff'
 import * as d3 from 'd3'
 import chroma from 'chroma-js'
 import VueDraggableResizable from 'vue-draggable-resizable'
-import CGP from '@/common/js/create-gis-pic.boundle'
-import RectLegend from '../../RectLegend/RectLegend'
-import LinerLegend from '../../LinerLegend/LinerLegend'
+import CGP from '../../common/js/create-gis-pic.boundle'
+import RectLegend from '../../RectLegend'
+import LinerLegend from '../../LinerLegend'
+import { async } from 'q'
 export default {
-  name: "SetGisPic",
+  name: "CGisPic",
   components: {
     VueDraggableResizable,
     RectLegend,
@@ -89,13 +90,16 @@ export default {
   },
   props: {
     config: {
-      el: "#gis-map",
-      width: 400,
-      height: 340,
-      readerData: data,
-      features: this.regionList,
-      scale: chroma.scale(this.colors),
-      type: "FeatureCollection"
+      type:Object,
+      default:()=>({
+        el: "#gis-map",
+        width: 400,
+        height: 340,
+        readerData: {},
+        features: this.regionList,
+        scale: chroma.scale(this.colors),
+        type: "FeatureCollection"
+      })
     },
     options:{
       type:Object,
@@ -104,6 +108,13 @@ export default {
         compass:{url:"/static/images/timg.jpg",position:[]},
         title:{label:"",position:[]},
         legend:{label:"",type:1,position:[]},
+      })
+    },
+    picOpt:{
+      type:Object,
+      default:()=>({
+        width:400,
+        height:300
       })
     },
     regionList: {
@@ -137,14 +148,16 @@ export default {
       return this.options.compass
     }
   },
-  mounted() {
-    this.init()
+  mounted(){
+    fetch("/static/temp.tif").then(res=>{
+      const buffer = res.arrayBuffer()
+      console.log(buffer)
+   
+      
+    })
   },
   methods: {
-    init() {//初始化区域列表geojson
-
-    },
-    initCutLayer(code, data, options) {
+    initLayer(code, data, options) {
       const config = this.config
       this.cgp = new CGP(config)
       let timer = setTimeout(() => {
@@ -164,7 +177,7 @@ export default {
       this.getScale(code)
     },
     getScale(code) {
-      const [width, height] = [400, 340]
+      const [width, height] = [this.picOpt.width, this.picOpt.height]
       let PIX = 6.8
       let region = {
         type: "FeatureCollection",
