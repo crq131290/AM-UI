@@ -12,8 +12,28 @@ export default{
       dialogVisible:false,
       checkboxData:[{id:1,label:'1111'}],
       legend:[{color:"red",label:111},{color:"green",label:211111111},{color:"blue",label:3333}],
-      tree:[{id:1,label:123},{id:2,label:123},{id:3,label:123}]
+      tree:[{id:1,label:123},{id:2,label:123},{id:3,label:123}],
+      regionList:[],
+      legendOpt:{data:[{color:"red",label:111},{color:"green",label:211111111},{color:"blue",label:3333}],type:1},
+      gis:null
     }
+  },
+  created(){
+    fetch("/static/neimeng.geojson").then(res=>{
+      return res.json()
+    }).then(res=>{
+      this.regionList = res.features
+      return fetch("/static/temp.tif")
+    }).then(res=>{
+      let that = this;
+      (async function(){
+        const buffer = await res.arrayBuffer()
+        that.gis = buffer
+        that.$nextTick(()=>{
+          // that.$refs.GP.initLayer(150000,buffer)
+        })
+      })()
+    })
   },
   watch:{
     test(val){
@@ -80,3 +100,7 @@ export default{
 
 ### SelectTree
 <c-select-tree :data="tree" class="w-30"></c-select-tree>
+### GIS
+<c-gis-pic v-if="gis" :data="gis" title="内蒙古自治区" :legend="legendOpt"  :region-list="regionList"></c-gis-pic>
+
+
