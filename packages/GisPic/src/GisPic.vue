@@ -1,24 +1,24 @@
 <template>
-  <div class="set-gis-pic">
+  <div class="c-gis-pic">
     <div class="ps-rel">
       <vue-draggable-resizable
-        style="width:6rem"
-        class="hover h-50-p"
-        :x="100"
+        style="width:6rem;height:50px;"
+        class="hover"
+        :x="0"
         :y="-50"
         :resizable="false"
       >
-        <h3 class="text-left m-t-5 fs-18 fw-700 color-111">{{title}}</h3>
+        <h3 class="text-center m-t-5 fs-18 fw-700 color-111">{{title}}</h3>
       </vue-draggable-resizable>
       <vue-draggable-resizable
-        style="width:6rem"
-        class="hover h-50-p"
-        :x="610"
+        style="width:50px;height:50px"
+        class="hover"
+        :x="550"
         :y="-70"
         :resizable="false"
       >
         <img
-          class="compass"
+          class="c-gis-pic__compass"
           :src="compass.url"
           alt=""
         >
@@ -26,48 +26,42 @@
       <vue-draggable-resizable
         style="width:3rem"
         class="hover"
-        :x="-20"
-        :y="250"
+        :x="-10"
+        :y="legend.type==1?250:50"
         :resizable="false"
       >
         <keep-alive>
-          <rect-legend
-            v-if="legendType==1"
-            :legend="legend"
-          ></rect-legend>
-          <liner-legend
-            v-else
-            :legend="legend"
-          ></liner-legend>
+          <c-rect-legend v-if="legend.type==1" :data="legend.data"></c-rect-legend>
+          <c-liner-legend v-else :data="legend.data" ></c-liner-legend>
         </keep-alive>
       </vue-draggable-resizable>
       <vue-draggable-resizable
-        style="width:3rem"
+        style="width:100px;height:30px;overflow:hidden"
         class="hover"
-        :x="560"
+        :x="550"
         :y="385"
         :resizable="false"
       >
-        <div id="scale"></div>
+        <div :id="element.scale"></div>
       </vue-draggable-resizable>
       <vue-draggable-resizable
-        style="width:3rem"
+        style="width:150px;height:20px"
         class="hover"
         :x="-10"
         :y="-70"
         :resizable="false"
       >
-        <h1>
+        <div class="c-gis-pic__unit">
           <img
             :src="unit.url"
             alt=""
           >
           <span>{{unit.label}}</span>
-        </h1>
+        </div>
       </vue-draggable-resizable>
     </div>
     <div
-      :id="config.el"
+      :id="element.map"
       class="text-center"
     ></div>
   </div>
@@ -80,7 +74,6 @@ import VueDraggableResizable from 'vue-draggable-resizable'
 import CGP from '../../common/js/create-gis-pic.boundle'
 import RectLegend from '../../RectLegend'
 import LinerLegend from '../../LinerLegend'
-import { async } from 'q'
 export default {
   name: "CGisPic",
   components: {
@@ -92,96 +85,84 @@ export default {
     config: {
       type:Object,
       default:()=>({
-        el: "#gis-map",
-        width: 400,
-        height: 340,
-        readerData: {},
-        features: this.regionList,
-        scale: chroma.scale(this.colors),
-        type: "FeatureCollection"
+        width: 480,
+        height: 360,
+        features: [],
+        colors:["#0000ff", "#00fff7", "#00ff08", "#ffff00", "#ff0000"],
+        type: "FeatureCollection",
+        projection:"geoMercator",
+        scale:"#scale"
       })
     },
     options:{
       type:Object,
-      default:()=>({
-        unit:{ label: "联智科技", url: "/static/images/unit.jpg" ,position:[]},
-        compass:{url:"/static/images/timg.jpg",position:[]},
-        title:{label:"",position:[]},
-        legend:{label:"",type:1,position:[]},
-      })
+      default:()=>({code:150000,colors:["#0000ff", "#00fff7", "#00ff08", "#ffff00", "#ff0000"],type:2,values:[]})
     },
-    picOpt:{
+    compass:{
       type:Object,
-      default:()=>({
-        width:400,
-        height:300
-      })
+      default:()=>({url:"/static/timg.jpg",position:[]})
+    },
+    unit:{
+      type:Object,
+      default:()=>({ label: "联智科技", url: "/static/images/unit.jpg" ,position:[]})
     },
     regionList: {
       type: Array,
       default: () => []
     },
     legend: {
-      type: Array,
-      default: () => []
-    },
-    legendType: {
-      type: Number,
-      default: () => 1
+      type: Object,
+      default: () => ({
+        type:1,
+        data:[]
+      })
     },
     title: {
       type: [String, Object],
       default: () => ""
+    },
+    element:{
+      type:Object,
+      default:()=>({map:"map",scale:"scale"})
+    },
+    data:{
+      type:ArrayBuffer,
+      default:()=>([])
     }
   },
   data() {
     return {
-      colors: ["#0000ff", "#00fff7", "#00ff08", "#ffff00", "#ff0000"],
       cgp: null
     };
   },
-  computed:{
-    unit(){
-      return this.options.unit || {}
-    },
-    compass(){
-      return this.options.compass
-    }
-  },
   mounted(){
-    fetch("/static/temp.tif").then(res=>{
-      const buffer = res.arrayBuffer()
-      console.log(buffer)
-   
-      
+    this.$nextTick(()=>{
+      this.initLayer(this.options.code,this.data,this.options)
     })
   },
   methods: {
-    initLayer(code, data, options) {
+    initLayer(code, buffer, options) {//region,buffer,gisOpt
       const config = this.config
-      this.cgp = new CGP(config)
-      let timer = setTimeout(() => {
-        this.changeRegion(code, data, options, 0)
-        clearTimeout(timer)
-      }, 200)
+      this.cgp = new CGP(`#${this.element.map}`,config,this.regionList)
+      this.changeRegion(code, buffer, options, 0)
     },
-    drawImg(code, data, options, index) {
+    drawImg(code, buffer, options, index) {
       if (this.cgp) {
-        this.changeRegion(code, data, options, index)
+        this.changeRegion(code, buffer, options, index)
       } else {
-        this.initCutLayer(code, data, options, index)
+        this.initCutLayer(code, buffer, options, index)
       }
     },
-    changeRegion(code, data, options, index) {
-      this.cgp.drawImg(code, data, options, index)
+    changeRegion(code, buffer, options, index) {
+      this.cgp.drawImg(code, buffer, options, index)
       this.getScale(code)
     },
     getScale(code) {
-      const [width, height] = [this.picOpt.width, this.picOpt.height]
+      const [width, height] = [this.config.width, this.config.height]
       let PIX = 6.8
       let region = {
         type: "FeatureCollection",
-        features: this.regionList.filter(item => item.properties.code == code)
+        features: this.regionList.filter(item => item.properties.code === code)
       }
       const projection = d3.geoMercator().fitExtent([[0, 0], [width, height]], region)
       const bounds = [projection.invert([0, 0]), projection.invert([0, height])]
@@ -193,7 +174,7 @@ export default {
       if (this.svg) {
         this.svg.remove()
       }
-      this.svg = d3.select("#scale").append("svg")
+      this.svg = d3.select(`#${this.element.scale}`).append("svg")
         .attr("width", 100)
         .attr("height", 100)
       let xScale = d3.scaleOrdinal().domain([0, distance]).range([0, 50])
@@ -202,29 +183,6 @@ export default {
         .attr("transform", `translate(10,10)`)
         .call(xAias)
     }
-  },
+  }
 }
 </script>
-<style lang="less" scoped>
-.set-gis-pic {
-  padding: 0.8rem 0.2rem 0.2rem;
-  width: 6.65rem;
-  height: 5rem;
-  border: 2px solid #111;
-  .compass {
-    width: 0.2rem;
-    height: 0.35rem;
-  }
-  h1 {
-    display: flex;
-    align-items: center;
-    img {
-      width: 16px;
-      margin-right: 5px;
-    }
-    span {
-      line-height: 20px;
-    }
-  }
-}
-</style>
