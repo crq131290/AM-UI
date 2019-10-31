@@ -1,4 +1,5 @@
-import {clickOutside} from './directives'
+// import {clickOutside} from './directives'
+import clickOutside from './click-outside'
 // datepicker mixin
 export const DatePickerMixin = {
   directives:{//custom directives

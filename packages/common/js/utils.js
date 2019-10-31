@@ -53,6 +53,10 @@ export function arrToOne(arr,key){//数组扁平化
 
 export default {
   formatDate(data,type){
+    const paddNum = function(num){
+      num +=""
+      return num.replace(/^(\d)$/,"0$1")
+    }
     const date = new Date(data),
           Y = date.getFullYear(),
           M = date.getMonth()+1,
@@ -60,14 +64,20 @@ export default {
           h = date.getHours(),
           m = date.getMinutes(),
           s = date.getSeconds()
-    const strategy = {
-      'yyyy-M-d':`${Y}-${M}-${d}`,
-      'yyyy-MM-dd':`${Y}-${M<10?'0'+M:M}-${d<10?'0'+d:d}`,
-      'yyyy-MM-dd-HH':`${Y}-${M}-${d}-${h<10?'0'+h:h}`,
-      'yyyy-MM-dd H:m:s ':`${Y}-${M}-${d} ${h}-${m}-${s}`,
-      'yyyy-MM-dd HH:mm:ss ':`${Y}-${M<10?'0'+M:M}-${d<10?'0'+d:d} ${h<10?'0'+h:h}-${m<10?'0'+m:m}-${s<10?'0'+s:s}`,
+    const config = {
+      yyyy:date.getFullYear(),
+      M:date.getMonth()+1,
+      MM:paddNum(date.getMonth()+1),
+      d:date.getDate(),
+      dd:paddNum(date.getDate()),
+      H:date.getHours(),
+      HH:paddNum(date.getHours()),
+      m:date.getMinutes(),
+      mm:paddNum(date.getMinutes()),
+      s:date.getSeconds(),
+      ss:paddNum(date.getSeconds())
     }
-    return strategy[type]
+    return type.replace(/([a-z])(\1)*/ig,m=>config[m])
   },
   formatDateRange(arr,type){//格式化时间
     return arr.map(item=>{

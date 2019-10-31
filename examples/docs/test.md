@@ -15,7 +15,10 @@ export default{
       tree:[{id:1,label:123},{id:2,label:123},{id:3,label:123}],
       regionList:[],
       legendOpt:{data:[{color:"red",label:111},{color:"green",label:211111111},{color:"blue",label:3333}],type:1},
-      gis:null
+      gis:null,
+      pieData:[{value:11,name:"test"},{value:13,name:"test2"},{value:16,name:"test3"},],
+      tableStructure:[{label:"x1",prop:"x1"},{label:"b",prop:"b"}],
+      tableData:[{x1:{label:111,code:1},b:321},{x1:{label:111,code:122},b:321},{x1:{label:111,code:12},b:321},{x1:{label:111,code:122},b:321},]
     }
   },
   created(){
@@ -103,4 +106,11 @@ export default{
 ### GIS
 <c-gis-pic v-if="gis" :data="gis" title="内蒙古自治区" :legend="legendOpt"  :region-list="regionList"></c-gis-pic>
 
+### 饼图
+<c-pie ></c-pie>
 
+### 表格组件
+<c-table :fields="tableStructure" :data="tableData"></c-table>
+
+<!-- ### test
+<c-test></c-test> -->

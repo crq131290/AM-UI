@@ -5,6 +5,7 @@
 
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
+import Test from "./Test"
 
 import CheckboxGroup from "./CheckboxGroup"
 import Dialog from "./Dialog"
@@ -16,16 +17,19 @@ import MapLegend from "./MapLegend"
 import PageSign from "./PageSign"
 import Panl from "./Panl"
 import PdfView from "./PdfView"
+import Pie from "./Pie"
 import ProgressBar from "./ProgressBar"
 
 import RectLegend from "./RectLegend"
 import Season from "./Season";
 import SelectTree from "./SelectTree";
+import Table from "./Table"
 import TimePicker from "./TimePicker"
 import TwoCol from "./TwoCol"
 import Xun from "./Xun";
 
 const components = [
+  Test,
   CheckboxGroup,
   Dialog,
   GradeLegend,
@@ -35,11 +39,13 @@ const components = [
   PageSign,
   Panl,
   PdfView,
+  Pie,
   ProgressBar,
   MapLegend,
   RectLegend,
   Season,
   SelectTree,
+  Table,
   TimePicker,
   TwoCol,
   Xun,

@@ -1,0 +1,91 @@
+@b c-table {
+    th {
+      font-size: 16px;
+    }
+
+    @e th{
+      @m color{
+        @m gray{
+          & th {
+            color: #e3e3e3;
+          }
+        }
+        @m white{
+          & th {
+            color: #fff;
+          }
+        }
+        @m black{
+          & th {
+            color:#333;
+          }
+        }
+      }
+    }
+    @e th{
+      @m bg {
+        @m white{
+          & th {
+            background: #fff;
+          }
+        }
+        @m gray{
+          & th {
+            background: #e3e3e3; 
+          }
+        }
+        @m black{
+          & th {
+            background: #333;
+          }
+        }
+      }
+      @m text {
+        @m center{
+          & th {
+            text-align: center;
+          }
+        }
+        @m left{
+          & th {
+            text-align: left;
+          }
+        }
+        @m right{
+          & th {
+            text-align: right;
+          }
+        }
+      }
+    }
+
+    @e td {
+      @m text {
+        @m center{
+          td,.el-input__inner {
+            text-align: center;
+          }
+        }
+        @m left{
+          td,.el-input__inner {
+            text-align: left;
+          }
+        }
+        @m right{
+          td,.el-input__inner {
+            text-align: right;
+          }
+        }
+      }
+    }
+    @when acitive {
+      background-color: #eef4e5;
+      color: #84c309;
+    }
+  .has-gutter th.gutter{
+    /*
+      解决table组件表头错位
+    */
+    display: table-cell!important;
+  }
+}

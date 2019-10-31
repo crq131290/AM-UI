@@ -1,5 +1,5 @@
 <template>
-  <div class="c-date" :value="value">
+  <div class="c-date" :value="value" v-click-outside="handler">
     <el-input
       v-model="input"
       :size="size"
@@ -12,7 +12,6 @@
       <div
         class="c-date__wrapper"
         v-if="show"
-        v-click-outside="config"
       >
         <div v-if="mode==1" class="c-date__header">
           <i
@@ -141,7 +140,6 @@ export default {
     }
   },
   mixins: [DatePickerMixin],
-
   created(){
     this.paramsDate = this.value
     this.initInputLabel(10)
