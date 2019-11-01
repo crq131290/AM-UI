@@ -13,6 +13,7 @@ export default {
 <style lang="less">
 @import "./assets/index";
 .example-block{
+
     display: flex;
 }
 #app {
