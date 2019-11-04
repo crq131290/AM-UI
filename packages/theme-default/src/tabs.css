@@ -1,0 +1,52 @@
+@b c-tabs{
+  @e wrapper{
+    position: relative;
+    overflow: hidden;
+  }
+  @e inner{
+    transition: left 1.5s ease;
+  }
+  @e item{
+    width: 1.5rem;
+    border: 1px solid #efefef;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-right:none; 
+    background: #eaeaea;
+    transition: all 0.5s ease 0s;
+    &>i:first-child{
+      width: calc(100% - 20px);
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+    &:last-child{
+      border-right:1px solid #efefef;
+    }
+    &.active,
+    &:hover{
+      color:#0f97ff;
+      background: #fff;
+      border-bottom: 1px solid #fff;
+    }
+  }
+  @e line{
+    margin-top: -1px;
+    border-top: 1px solid #efefef; 
+  }
+  @e swiper{
+    @m left{
+      top:6px;
+      left: 0;
+    }
+  }
+  @e swiper{
+    @m right{
+      top:6px;
+      right: 0;
+    }
+  }
+  .fs-28{
+    font-size: 28px;
+  }
+}
