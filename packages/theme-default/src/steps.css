@@ -1,0 +1,35 @@
+@b c-steps{
+  @e item{
+    &:not(:first-child){
+      flex:1;
+      text-align: right;
+    }
+  }
+  @e line{
+    top:8px;
+    flex:1;
+    margin: 0 5px;
+    height: 2px;
+    background-color: #818181;
+  }
+  @e icon{
+    padding: 2px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 50%;
+    background-color: #818181;
+    color:#fff;
+  }
+  @e label{
+    top:10px;
+  }
+  .active{
+    & .c-steps__line,& .c-steps__icon{
+      background-color: #84c309;
+    }
+    .c-steps__label{
+      color:#84c309;
+    }
+  }
+}

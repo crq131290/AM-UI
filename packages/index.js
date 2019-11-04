@@ -23,7 +23,9 @@ import ProgressBar from "./ProgressBar"
 import RectLegend from "./RectLegend"
 import Season from "./Season";
 import SelectTree from "./SelectTree";
+import Steps from "./Steps";
 import Table from "./Table"
+import Tabs from "./Tabs"
 import TimePicker from "./TimePicker"
 import TwoCol from "./TwoCol"
 import Xun from "./Xun";
@@ -45,7 +47,9 @@ const components = [
   RectLegend,
   Season,
   SelectTree,
+  Steps,
   Table,
+  Tabs,
   TimePicker,
   TwoCol,
   Xun,

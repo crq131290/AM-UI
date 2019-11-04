@@ -18,7 +18,9 @@ export default{
       gis:null,
       pieData:[{value:11,name:"test"},{value:13,name:"test2"},{value:16,name:"test3"},],
       tableStructure:[{label:"x1",prop:"x1"},{label:"b",prop:"b"}],
-      tableData:[{x1:{label:111,code:1},b:321},{x1:{label:111,code:122},b:321},{x1:{label:111,code:12},b:321},{x1:{label:111,code:122},b:321},]
+      tableData:[{x1:{label:111,code:1},b:321},{x1:{label:111,code:122},b:321},{x1:{label:111,code:12},b:321},{x1:{label:111,code:122},b:321},],
+      tabs:[{id:1,label:"xxx"},{id:2,label:"xxx"},],
+      steps:[{step:1,label:"第一步"},{step:1,label:"第二步"},{step:2,label:"第三步"},]
     }
   },
   created(){
@@ -112,6 +114,11 @@ export default{
 ### 表格组件
 <c-table :fields="tableStructure" :data="tableData"></c-table>
 
+### tabs组件
+<c-tabs :data="tabs"></c-tabs>
+
+### steps组件
+<c-steps :data="steps"><c-steps>
 <!-- ### test
 
 <c-test></c-test> -->
