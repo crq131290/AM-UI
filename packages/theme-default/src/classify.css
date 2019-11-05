@@ -1,0 +1,43 @@
+@b c-classify{
+  .pad-15-40{
+    padding: 15px 40px;
+  }
+   @e inner{
+    align-items: center;
+    justify-content: space-between;
+    &>div{
+      &:first-child{
+        flex:.7;
+        display: flex;
+        align-items: center;
+      }
+      &:last-child{
+        flex:.8;
+      }
+    }
+    &:first-child{
+      .right{
+        position: relative;
+        right: .3rem;
+      }
+    }
+    &:last-child{
+      .right{
+        position: relative;
+        right: .6rem;
+      }
+    }
+  }
+  .pad-1{
+    padding: 1px;
+  }
+  .color-fff{
+    color:#fff;
+  }
+  .bg-84c309{
+    background: #84c309;
+  }
+  .bg-f34949{
+    background: #f34949;
+  }
+}

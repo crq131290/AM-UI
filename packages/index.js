@@ -8,7 +8,10 @@ import 'element-ui/lib/theme-chalk/index.css';
 import Test from "./Test"
 
 import CheckboxGroup from "./CheckboxGroup"
+import CKEditor from "./CKEditor"
+import Classify from "./Classify"
 import Dialog from "./Dialog"
+import CWEditor from "./CWEditor"
 import GradeLegend from './GradeLegend'
 import Hou from "./Hou";
 import GisPic from "./GisPic";
@@ -33,6 +36,9 @@ import Xun from "./Xun";
 const components = [
   Test,
   CheckboxGroup,
+  CKEditor,
+  Classify,
+  CWEditor,
   Dialog,
   GradeLegend,
   Hou,
