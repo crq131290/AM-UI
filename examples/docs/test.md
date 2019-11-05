@@ -20,7 +20,9 @@ export default{
       tableStructure:[{label:"x1",prop:"x1"},{label:"b",prop:"b"}],
       tableData:[{x1:{label:111,code:1},b:321},{x1:{label:111,code:122},b:321},{x1:{label:111,code:12},b:321},{x1:{label:111,code:122},b:321},],
       tabs:[{id:1,label:"xxx"},{id:2,label:"xxx"},],
-      steps:[{step:1,label:"第一步"},{step:1,label:"第二步"},{step:2,label:"第三步"},]
+      steps:[{step:1,label:"第一步"},{step:1,label:"第二步"},{step:2,label:"第三步"},],
+      classifyData:[{id:1,colorList:["red","#aaa"],labelList:["test1","test2"],valueList:[1]},
+                {id:2,colorList:["#111","#999"],labelList:["test12","test22"],valueList:[11]},]
     }
   },
   created(){
@@ -122,3 +124,11 @@ export default{
 <!-- ### test
 
 <c-test></c-test> -->
+### 分级组件
+<c-classify :data="classifyData" class="w-50"></c-classify>
+
+### 富文本编辑器
+<c-w-editor class="w-75"></c-w-editor>
+
+### CKEditor
+<c-k-editor></c-k-editor>
